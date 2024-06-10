@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7cu22p1b5vhh"]
+
+[ext_resource type="Texture2D" uid="uid://cx3t3y4dd6ryk" path="res://graphics/enemies/hunter/hunter.png" id="1_u4xo3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8joo"]
+radius = 35.0
+height = 298.0
+
+[node name="Hunter" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+rotation = 1.5708
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_u4xo3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e8joo")

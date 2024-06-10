@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://da58qgcay0ebp"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_epfbd"]
+[ext_resource type="Texture2D" uid="uid://bbtcj55n8vxff" path="res://graphics/projectiles/blue.png" id="1_msa88"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6v3t1"]
+radius = 7.0
+height = 96.0
+
+[node name="Laser" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_epfbd")
+
+[node name="LaserImage" type="Sprite2D" parent="."]
+position = Vector2(-1, 34)
+texture = ExtResource("1_msa88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6v3t1")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]
